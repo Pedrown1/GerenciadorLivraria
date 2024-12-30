@@ -1,32 +1,32 @@
-package com.ph.project.GerenciadorLivraria.entity;
+package com.ph.project.GerenciadorLivraria.dto;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Entity
-public class Author {
+public class AuthorDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-Increment
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank
+    @Size(max = 200)
     private String name;
 
-    @Column(nullable = false)
+    @NotNull
+    @Size(max = 100)
     private Integer age;
 
-    public Author(Long id, String name, Integer age) {
+    public AuthorDTO(Long id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
-    public Author() {}
+    public AuthorDTO() {}
 
     public Long getId() {
         return id;

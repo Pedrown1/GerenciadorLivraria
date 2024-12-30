@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Builder
 public class Book {
 
     @Id
@@ -44,6 +43,64 @@ public class Book {
         this.author = author;
     }
     public Book(){}
+
+    // Método estático Builder
+    public static class Builder {
+        private Long id;
+        private String name;
+        private Integer pages;
+        private Integer chapters;
+        private String isbn;
+        private String publisherName;
+        private Author author;
+
+        public Builder withId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder withPages(Integer pages) {
+            this.pages = pages;
+            return this;
+        }
+
+        public Builder withChapters(Integer chapters) {
+            this.chapters = chapters;
+            return this;
+        }
+
+        public Builder withIsbn(String isbn) {
+            this.isbn = isbn;
+            return this;
+        }
+
+        public Builder withPublisherName(String publisherName) {
+            this.publisherName = publisherName;
+            return this;
+        }
+
+        public Builder withAuthor(Author author) {
+            this.author = author;
+            return this;
+        }
+
+        public Book build() {
+            Book book = new Book();
+            book.setId(this.id);
+            book.setName(this.name);
+            book.setPages(this.pages);
+            book.setChapters(this.chapters);
+            book.setIsbn(this.isbn);
+            book.setPublisherName(this.publisherName);
+            book.setAuthor(this.author);
+            return book;
+        }
+    }
 
     public Long getId() {
         return id;
